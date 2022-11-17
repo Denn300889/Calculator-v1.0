@@ -12,7 +12,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity {
-
+//
     TextView textView_result_2, textView_result_1;
     Button btn_7, btn_8, btn_9, btn_4, btn_5, btn_6, btn_1, btn_2, btn_3, btn_0, btn_plus, btn_minus, btn_result, btn_poin, btn_multiply, btn_percent, btn_1divX, btn_sqr, btn_sqrt, btn_plus_minus, btn_C, btn_div;
     Double num_1 = null, num_2; //, num_result;
