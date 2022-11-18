@@ -222,5 +222,4 @@ public class MainActivity extends AppCompatActivity {
         num_2= null;
     }
 
-
 }
