@@ -25,7 +25,7 @@
         android:layout_marginBottom="10dp"
         android:textAlignment="textEnd"
         android:textSize="15sp"
-        app:layout_constraintBottom_toTopOf="@+id/textView_result_2"
+        app:layout_constraintBottom_toTopOf="@+id/textView_result_3"
         app:layout_constraintEnd_toEndOf="@+id/textView_result_2"
         app:layout_constraintStart_toStartOf="@+id/textView_result_2" />
 
@@ -36,6 +36,17 @@
         android:textAlignment="textEnd"
         android:textSize="30sp"
         app:layout_constraintBottom_toTopOf="@+id/horizontal_line"
+        app:layout_constraintEnd_toEndOf="@+id/horizontal_line"
+        app:layout_constraintStart_toStartOf="@+id/horizontal_line" />
+
+    <TextView
+        android:id="@+id/textView_result_3"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:textAlignment="textEnd"
+        android:textSize="30sp"
+        app:layout_constraintBottom_toTopOf="@+id/textView_result_2"
         app:layout_constraintEnd_toEndOf="@+id/horizontal_line"
         app:layout_constraintStart_toStartOf="@+id/horizontal_line" />
 

@@ -13,9 +13,9 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity {
 
-    TextView textView_result_2, textView_result_1;
+    TextView textView_result_3,textView_result_2, textView_result_1;
     Button btn_7, btn_8, btn_9, btn_4, btn_5, btn_6, btn_1, btn_2, btn_3, btn_0, btn_plus, btn_minus, btn_result, btn_poin, btn_multiply, btn_percent, btn_1divX, btn_sqr, btn_sqrt, btn_plus_minus, btn_C, btn_div;
-    Double num_1 = null, num_2; //, num_result;
+    Double num_1 = null, num_2, num_result;
     int serialNum=1; // Счётчики
     int mathOperation=0; // математические операции 0 - нет операций, 1 - +, 2 - -, 3 - *, 4 - /, 5 - %
 
@@ -25,6 +25,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         textView_result_1 = (TextView) findViewById(R.id.textView_result_1);
         textView_result_2 = (TextView) findViewById(R.id.textView_result_2);
+        textView_result_3 = (TextView) findViewById(R.id.textView_result_3);
         btn_0 = (Button) findViewById(R.id.btn_0);
         btn_1 = (Button) findViewById(R.id.btn_1);
         btn_2 = (Button) findViewById(R.id.btn_2);
@@ -101,24 +102,24 @@ public class MainActivity extends AppCompatActivity {
     public void clickBtn_plus(View view){
         textView_result_1.setText((String)textView_result_1.getText()+btn_plus.getText());
         mathOperation=1;
-        if (textView_result_2.getText()=="") textView_result_2.setText(String.valueOf(Double.valueOf("0")));
-        num_1 = Double.valueOf(String.valueOf(textView_result_2.getText()));
-        textView_result_2.setText("");
+        if (serialNum==1){
+            if (textView_result_2.getText()=="") textView_result_2.setText(String.valueOf(Double.valueOf("0")));
+            num_1 = Double.valueOf(String.valueOf(textView_result_2.getText()));
+            textView_result_2.setText("");
+            serialNum++;
+        } else {
+            if (textView_result_2.getText()=="") num_2= Double.valueOf(0);
+            else num_2=Double.valueOf(String.valueOf(textView_result_2.getText()));
+            num_result = num_1+num_2;
+            num_1=num_result;
+            textView_result_3.setText(String.valueOf(Double.valueOf(num_result)));
+            textView_result_2.setText("");
+//            serialNum=1;
 
-//            serialNim=2;
-//        if (serialNim==1){
-//            num_1 = Double.valueOf(String.valueOf(textView_result_2.getText()));
-//            textView_result_2.setText("");
-//            serialNim=2;
-//        } else {
-//            num_2 = Double.valueOf(String.valueOf(textView_result_2.getText()));
-//            textView_result_2.setText("");
-//        }
-//        if ((num_1!=null)&&(num_2!=null)){
-//            num_1=num_1+num_2;
-//            textView_result_2.setText(String.valueOf(num_1));
-//        }
+        }
+
     }
+
     public void clickBtn_minus(View view){
         textView_result_1.setText((String)textView_result_1.getText()+btn_minus.getText());
         mathOperation=2;
@@ -220,6 +221,7 @@ public class MainActivity extends AppCompatActivity {
         mathOperation=0;
         num_1= null;
         num_2= null;
+        serialNum=1;
     }
 
 }
