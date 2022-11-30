@@ -123,9 +123,18 @@ public class MainActivity extends AppCompatActivity {
     public void clickBtn_minus(View view){
         textView_result_1.setText((String)textView_result_1.getText()+btn_minus.getText());
         mathOperation=2;
-        if (textView_result_2.getText()=="") textView_result_2.setText(String.valueOf(Double.valueOf("0")));
-        num_1 = Double.valueOf(String.valueOf(textView_result_2.getText()));
-        textView_result_2.setText("");
+        if (serialNum==1){
+            if (textView_result_2.getText()=="") textView_result_2.setText(String.valueOf(Double.valueOf("0")));
+            num_1 = Double.valueOf(String.valueOf(textView_result_2.getText()));
+            textView_result_2.setText("");
+        } else {
+            if (textView_result_2.getText()=="") num_2= Double.valueOf(0);
+            else num_2=Double.valueOf(String.valueOf(textView_result_2.getText()));
+            num_result = num_1-num_2;
+            num_1=num_result;
+            textView_result_3.setText(String.valueOf(Double.valueOf(num_result)));
+            textView_result_2.setText("");
+        }
     }
     public void clickBtn_multiply(View view){
         textView_result_1.setText((String)textView_result_1.getText()+btn_multiply.getText());
@@ -154,20 +163,30 @@ public class MainActivity extends AppCompatActivity {
         if (mathOperation==1) {
             if (textView_result_2.getText()=="") num_2= Double.valueOf(0);
             else num_2=Double.valueOf(String.valueOf(textView_result_2.getText()));
-            textView_result_2.setText(String.valueOf(Double.valueOf(num_1+num_2)));
-            textView_result_1.setText((String)textView_result_1.getText()+"\n"+btn_result.getText()+(String) textView_result_2.getText()+"\n");
+            num_result=num_1+num_2;
+            textView_result_3.setText(String.valueOf(Double.valueOf(num_result)));
+            textView_result_1.setText((String)textView_result_1.getText()+" "+btn_result.getText()+" "+num_result+"\n");
+            textView_result_2.setText("");
+            num_1=num_2=num_result=null;
+            mathOperation=0;
+            serialNum=1;
         }
         if (mathOperation==2){
             if (textView_result_2.getText()=="") num_2= Double.valueOf(0);
             else num_2=Double.valueOf(String.valueOf(textView_result_2.getText()));
-            textView_result_2.setText(String.valueOf(Double.valueOf(num_1-num_2)));
+            textView_result_3.setText(String.valueOf(Double.valueOf(num_1-num_2)));
             textView_result_1.setText((String)textView_result_1.getText()+"\n"+btn_result.getText()+(String) textView_result_2.getText()+"\n");
+            textView_result_2.setText("");
+            num_1=num_2=num_result=null;
+            mathOperation=0;
         }
         if (mathOperation==3){
             if (textView_result_2.getText()=="") num_2= Double.valueOf(0);
             else num_2=Double.valueOf(String.valueOf(textView_result_2.getText()));
             textView_result_2.setText(String.valueOf(Double.valueOf(num_1*num_2)));
             textView_result_1.setText((String)textView_result_1.getText()+"\n"+btn_result.getText()+(String) textView_result_2.getText()+"\n");
+            textView_result_3.setText("");
+            num_1=num_2=num_result=null;
         }
         if (mathOperation==4){
             if (textView_result_2.getText()=="") num_2= Double.valueOf(0);
@@ -178,6 +197,8 @@ public class MainActivity extends AppCompatActivity {
             } else {
                 textView_result_2.setText(String.valueOf(Double.valueOf(num_1/num_2)));
                 textView_result_1.setText((String)textView_result_1.getText()+"\n"+btn_result.getText()+(String) textView_result_2.getText()+"\n");
+                textView_result_3.setText("");
+                num_1=num_2=num_result=null;
             }
         }
         if (mathOperation==5){
@@ -185,6 +206,8 @@ public class MainActivity extends AppCompatActivity {
             else num_2=Double.valueOf(String.valueOf(textView_result_2.getText()));
             textView_result_2.setText(String.valueOf(Double.valueOf((num_1/100)*num_2)));
             textView_result_1.setText((String)textView_result_1.getText()+"\n"+btn_result.getText()+(String) textView_result_2.getText()+"\n");
+            textView_result_3.setText("");
+            num_1=num_2=num_result=null;
         }
     }
     public void clickBtn_1divX(View view){
