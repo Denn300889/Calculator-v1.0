@@ -51,12 +51,72 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void clickBtn_0(View view){
-        textView_result_2.setText((String)textView_result_2.getText()+btn_0.getText());
-        textView_result_1.setText((String)textView_result_1.getText()+btn_0.getText());
+        mathCalculationForNumbers(0);
+//        if (serialNum==1){
+//            textView_result_2.setText((String)textView_result_2.getText()+btn_0.getText());
+//            textView_result_1.setText((String)textView_result_1.getText()+btn_0.getText());
+//        } else {
+//            if (mathOperation==1){
+//                textView_result_2.setText((String)textView_result_2.getText()+btn_0.getText());
+//                textView_result_1.setText((String)textView_result_1.getText()+btn_0.getText());
+//                num_result=num_1+Double.valueOf(String.valueOf(textView_result_2.getText()));
+//            }
+//            if (mathOperation==2){
+//                textView_result_2.setText((String)textView_result_2.getText()+btn_0.getText());
+//                textView_result_1.setText((String)textView_result_1.getText()+btn_0.getText());
+//                num_result=num_1-Double.valueOf(String.valueOf(textView_result_2.getText()));
+//            }
+//            if (mathOperation==3){
+//                textView_result_2.setText((String)textView_result_2.getText()+btn_0.getText());
+//                textView_result_1.setText((String)textView_result_1.getText()+btn_0.getText());
+//                num_result=num_1*Double.valueOf(String.valueOf(textView_result_2.getText()));
+//            }
+//            if (mathOperation==4) {
+//                Toast.makeText(MainActivity.this,"Запрещенная математическия операция: x/0",Toast.LENGTH_SHORT).show();
+//                textView_result_2.setText("");
+//            }
+//            num_1=num_result;
+//            textView_result_3.setText(String.valueOf(Double.valueOf(num_result)));
+//        }
+    }
+    public void mathCalculationForNumbers(Integer num){
+        if (serialNum==1){
+            textView_result_2.setText((String)textView_result_2.getText()+num);
+            textView_result_1.setText((String)textView_result_1.getText()+num);
+        } else {
+            if (mathOperation == 1) {
+                textView_result_2.setText((String) textView_result_2.getText() + num);
+                textView_result_1.setText((String) textView_result_1.getText() + num);
+                num_result = num_1 + Double.valueOf(String.valueOf(textView_result_2.getText()));
+            }
+            if (mathOperation == 2) {
+                textView_result_2.setText((String) textView_result_2.getText() + num);
+                textView_result_1.setText((String) textView_result_1.getText() + num);
+                num_result = num_1 - Double.valueOf(String.valueOf(textView_result_2.getText()));
+            }
+            if (mathOperation == 3) {
+                textView_result_2.setText((String) textView_result_2.getText() + num);
+                textView_result_1.setText((String) textView_result_1.getText() + num);
+                num_result = num_1 * Double.valueOf(String.valueOf(textView_result_2.getText()));
+            }
+            if (mathOperation == 4) {
+                if (num == 0) {
+                    Toast.makeText(MainActivity.this, "Запрещенная математическия операция: x/0", Toast.LENGTH_SHORT).show();
+                    textView_result_2.setText("");
+                } else {
+                    textView_result_2.setText((String) textView_result_2.getText() + num);
+                    textView_result_1.setText((String) textView_result_1.getText() + num);
+                    num_result = num_1 / Double.valueOf(String.valueOf(textView_result_2.getText()));
+                }
+            }
+            num_1 = num_result;
+            textView_result_3.setText(String.valueOf(Double.valueOf(num_result)));
+        }
     }
     public void clickBtn_1(View view){
-        textView_result_2.setText((String)textView_result_2.getText()+btn_1.getText());
-        textView_result_1.setText((String)textView_result_1.getText()+btn_1.getText());
+        mathCalculationForNumbers(1);
+//        textView_result_2.setText((String)textView_result_2.getText()+btn_1.getText());
+//        textView_result_1.setText((String)textView_result_1.getText()+btn_1.getText());
     }
     public void clickBtn_2(View view){
         textView_result_2.setText((String)textView_result_2.getText()+btn_2.getText());
@@ -102,24 +162,26 @@ public class MainActivity extends AppCompatActivity {
     public void clickBtn_plus(View view){
         textView_result_1.setText((String)textView_result_1.getText()+btn_plus.getText());
         mathOperation=1;
-        if (serialNum==1){
-            if (textView_result_2.getText()=="") textView_result_2.setText(String.valueOf(Double.valueOf("0")));
-            num_1 = Double.valueOf(String.valueOf(textView_result_2.getText()));
-            textView_result_2.setText("");
-            serialNum++;
-        } else {
-            if (textView_result_2.getText()=="") num_2= Double.valueOf(0);
-            else num_2=Double.valueOf(String.valueOf(textView_result_2.getText()));
-            num_result = num_1+num_2;
-            num_1=num_result;
-            textView_result_3.setText(String.valueOf(Double.valueOf(num_result)));
-            textView_result_2.setText("");
-//            serialNum=1;
+        serialNum=2;
+        if (textView_result_2.getText()=="") textView_result_2.setText(String.valueOf(Double.valueOf("0")));
+        num_1 = Double.valueOf(String.valueOf(textView_result_2.getText()));
+        textView_result_2.setText("");
 
-        }
+//        if (serialNum==1){
+//            if (textView_result_2.getText()=="") textView_result_2.setText(String.valueOf(Double.valueOf("0")));
+//            num_1 = Double.valueOf(String.valueOf(textView_result_2.getText()));
+//            textView_result_2.setText("");
+//            serialNum++;
+//        } else {
+//            if (textView_result_2.getText()=="") num_2= Double.valueOf(0);
+//            else num_2=Double.valueOf(String.valueOf(textView_result_2.getText()));
+//            num_result = num_1+num_2;
+//            num_1=num_result;
+//            textView_result_3.setText(String.valueOf(Double.valueOf(num_result)));
+//            textView_result_2.setText("");
+//        }
 
     }
-
     public void clickBtn_minus(View view){
         textView_result_1.setText((String)textView_result_1.getText()+btn_minus.getText());
         mathOperation=2;
@@ -127,6 +189,7 @@ public class MainActivity extends AppCompatActivity {
             if (textView_result_2.getText()=="") textView_result_2.setText(String.valueOf(Double.valueOf("0")));
             num_1 = Double.valueOf(String.valueOf(textView_result_2.getText()));
             textView_result_2.setText("");
+            serialNum++;
         } else {
             if (textView_result_2.getText()=="") num_2= Double.valueOf(0);
             else num_2=Double.valueOf(String.valueOf(textView_result_2.getText()));
@@ -139,16 +202,41 @@ public class MainActivity extends AppCompatActivity {
     public void clickBtn_multiply(View view){
         textView_result_1.setText((String)textView_result_1.getText()+btn_multiply.getText());
         mathOperation=3;
-        if (textView_result_2.getText()=="") textView_result_2.setText(String.valueOf(Double.valueOf("0")));
-        num_1 = Double.valueOf(String.valueOf(textView_result_2.getText()));
-        textView_result_2.setText("");
+        if (serialNum==1){
+            if (textView_result_2.getText()=="") textView_result_2.setText(String.valueOf(Double.valueOf("0")));
+            num_1 = Double.valueOf(String.valueOf(textView_result_2.getText()));
+            textView_result_2.setText("");
+            serialNum++;
+        } else {
+            if (textView_result_2.getText()=="") num_2= Double.valueOf(0);
+            else num_2=Double.valueOf(String.valueOf(textView_result_2.getText()));
+            num_result = num_1*num_2;
+            num_1=num_result;
+            textView_result_3.setText(String.valueOf(Double.valueOf(num_result)));
+            textView_result_2.setText("");
+        }
     }
     public void clickBtn_div(View view){
         textView_result_1.setText((String)textView_result_1.getText()+btn_div.getText());
         mathOperation=4;
-        if (textView_result_2.getText()=="") textView_result_2.setText(String.valueOf(Double.valueOf("0")));
-        num_1 = Double.valueOf(String.valueOf(textView_result_2.getText()));
-        textView_result_2.setText("");
+        if (serialNum==1){
+            if (textView_result_2.getText()=="") textView_result_2.setText(String.valueOf(Double.valueOf("0")));
+            num_1 = Double.valueOf(String.valueOf(textView_result_2.getText()));
+            textView_result_2.setText("");
+            serialNum++;
+        } else {
+            if (textView_result_2.getText()=="") num_2= Double.valueOf(0);
+            else num_2=Double.valueOf(String.valueOf(textView_result_2.getText()));
+            if (num_2==0){
+                Toast.makeText(MainActivity.this,"Запрещенная математическия операция: x/0",Toast.LENGTH_SHORT).show();
+                textView_result_2.setText("");
+            } else {
+                num_result = num_1/num_2;
+                num_1=num_result;
+                textView_result_3.setText(String.valueOf(Double.valueOf(num_result)));
+                textView_result_2.setText("");
+            }
+        }
     }
     public void clickBtn_percent(View view){
         textView_result_1.setText((String)textView_result_1.getText()+btn_percent.getText());
@@ -248,8 +336,9 @@ public class MainActivity extends AppCompatActivity {
         }
     }
     public void clickBtn_C(View view){
-        textView_result_2.setText(null);
         textView_result_1.setText(null);
+        textView_result_2.setText(null);
+        textView_result_3.setText(null);
         mathOperation=0;
         num_1= null;
         num_2= null;
