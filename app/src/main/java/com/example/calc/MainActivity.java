@@ -371,7 +371,7 @@ public class MainActivity extends AppCompatActivity {
                     num_result = num_1 / Double.valueOf(String.valueOf(textView_result_2.getText()));
                 }
             }
-            num_1 = num_result;
+//            num_1 = num_result;
             textView_result_3.setText(String.valueOf(Double.valueOf(num_result)));
         }
     }
